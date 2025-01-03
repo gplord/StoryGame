@@ -1,0 +1,603 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.logo {
+  margin: 20px auto;
+}
+
+#ui {
+  background: rgb(192, 69, 255);
+  background: linear-gradient(45deg, rgba(192, 69, 255, 1) 0%, rgba(0, 84, 185, 1) 100%);
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#ui.sg {
+  background: rgb(192, 69, 255);
+  background: linear-gradient(45deg, rgba(192, 69, 255, 1) 0%, rgba(0, 84, 185, 1) 100%);
+}
+
+#ui.gs {
+  background: rgb(0, 84, 185);
+  background: linear-gradient(45deg, rgba(0, 84, 185, 1) 0%, rgba(192, 69, 255, 1) 100%);
+}
+
+.item-fit {
+  flex-grow: 1;
+  width: 15%;
+}
+
+.item-fit+.item-fit {
+  margin-left: 2%;
+}
+
+.item-half {
+  width: 48%;
+  height: 100px;
+  margin-bottom: 2%;
+}
+
+.item-full {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.card-round {
+  background: #eee;
+  border-radius: 5px;
+  box-shadow: 0 3px 1px rgba(0, 0, 0, 0.65);
+  font-family: "Fira Sans Extra Condensed", sans-serif;
+  min-height: 100px;
+}
+
+.card-round h4,
+.card-round p {
+  margin: 0;
+  padding: 0;
+}
+
+.card-round h4 {
+  background: rgba(0, 0, 0, 0.7);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #fff;
+  text-shadow: 0 3px 0 black;
+  font-size: 13pt;
+  text-transform: uppercase;
+  padding: 0.5em;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.card-round p {
+  font-size: 16pt;
+  padding: 0.5em;
+}
+
+#sequence-cards {
+  margin-top: 20px;
+}
+
+.sequence-card-label {
+  background: rgba(0, 0, 0, 0.7);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: #fff;
+  font-family: "Fira Sans Extra Condensed", sans-serif;
+  padding: 15px;
+  text-shadow: 0 3px 0 black;
+}
+
+.sequence-card {
+  background: #eee;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.65);
+  font-family: "Fira Sans Extra Condensed", sans-serif;
+  font-size: 16pt;
+  height: 100%;
+  min-height: 150px;
+  padding: 15px;
+  text-align: center;
+}
+
+.game-home.game-screen-bkgd {
+  padding: 50px 0;
+  padding-bottom: 80px;
+}
+
+.game-screen-bkgd {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  font-family: "Fira Sans Extra Condensed", sans-serif;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.game-screen-bkgd h3 {}
+
+.vertical-spacer {
+  margin: 2em 0;
+}
+
+.separator {
+  display: block;
+  height: 30px;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 30px;
+}
+
+
+.option-cards-frame {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.option-cards {
+  /* display: none; */
+}
+
+.section-info {
+  background: #eee;
+  border-radius: 10px;
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.65);
+  font-family: "Fira Sans Extra Condensed", sans-serif;
+  font-size: 18pt;
+  padding: 50px;
+}
+
+.section-info .section-tagline {
+  font-size: 21pt;
+  text-align: center;
+}
+
+.option-card {
+  background: #eee;
+  border-radius: 10px;
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.65);
+  font-family: "Fira Sans Extra Condensed", sans-serif;
+  font-size: 21pt;
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 15px;
+  padding: 50px 10px;
+}
+
+.option-card-content {
+  height: 100%;
+}
+
+.option-card-content p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20%;
+}
+
+.option-button {
+  color: #fff;
+  font-family: "Fira Sans Extra Condensed", sans-serif;
+  text-align: center;
+}
+
+.option-button .btn,
+.reroll-button .btn,
+.game-home .btn {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.65);
+  font-family: "Lilita One", sans-serif;
+  font-size: 18pt;
+  padding: 0.5em 1.5em;
+  text-shadow: 0 2px 2px black;
+}
+
+.option-button .btn-primary {
+  background: rgb(25, 211, 8);
+  border-color: rgba(25, 211, 8);
+}
+
+.option-button .btn-primary:hover {
+  background: rgb(14, 165, 0);
+  border-color: rgb(14, 165, 0);
+}
+
+.option-button .btn-primary.reroll {
+  background: rgb(187, 8, 211);
+  border-color: rgb(187, 8, 211);
+  margin-left: 1em;
+}
+
+.option-button .btn-primary.reroll:hover {
+  background: rgb(143, 0, 161);
+  border-color: rgb(143, 0, 161);
+}
+
+.game-home .btn {
+  margin: 0.5em;
+}
+
+.section-heading {
+  color: #fff;
+  font-family: "Lilita One", sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+  padding-top: 10px;
+}
+
+.section-heading .col-section {
+  line-height: 24pt;
+  text-transform: uppercase;
+}
+
+.section-heading .col-title {
+  font-size: 24pt;
+  line-height: 24pt;
+  text-align: center;
+}
+
+.section-heading .col-timer {
+  line-height: 24pt;
+  text-align: right;
+}
+
+.logo-block {
+  text-align: center;
+}
+
+.reroll-button-bar {
+  position: relative;
+  text-align: center;
+  height: 30px;
+}
+
+.reroll-button .btn-primary {
+  background: rgb(187, 8, 211);
+  border-color: rgb(187, 8, 211);
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.reroll-button .btn-primary:hover {
+  background: rgb(143, 0, 161);
+  border-color: rgb(143, 0, 161);
+}
+
+.reroll-button .btn.d6 {
+  padding: 0.5em 0.75em;
+}
+
+#templates {
+  display: none;
+}
+
+#ui-menus {
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+
+/* -------------------------------------- */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #777;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #0dc70d;
+}
+input:focus+.slider {
+  box-shadow: 0 0 1px #0dc70d;
+}
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* -------------------------------------- */
+
+/* Configure Menu */
+
+.configure-select,
+.configure-input-text {
+  display: inline-block;
+  height: calc(2.25rem + 2px);
+  padding: .375rem 1.75rem .375rem .75rem;
+  line-height: 1.5;
+  color: #495057;
+  vertical-align: middle;
+  border: 1px solid #ced4da;
+}
+
+.configure-input-text {
+  width: 100%;
+}
+
+.configure-form-options {
+  text-align: left;
+}
+
+.configure-form-options .row {
+  margin-bottom: 2px;
+}
+
+.configure-form-option {
+  text-align: left;
+}
+
+.configure-toggle {
+  margin-bottom: 5px;
+}
+
+.configure-toggle .toggle-label {
+  font-size: 14pt;
+  line-height: 26px;
+  vertical-align: middle;
+}
+
+.configure-export-output {
+  width: 100%;
+  height: 100%;
+}
+
+.configure-export,
+.configure-download {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.configure-download {
+  display: none;
+}
+
+#templates {
+  display: none;
+}
+
+.configure-option-add {
+  margin-top: 1em;
+}
+
+#config .sectionbox {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 2em;
+  padding-bottom: 2em;
+}
+
+.option-label {
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+
+#gameModeDesc {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  margin: 1em 0;
+  padding: 1em;
+}
+
+.menu-config {
+  position: relative;
+}
+
+.closebutton {
+  position: absolute;
+  top: 0px;
+  right: -10px;
+}
+
+/* -------------------------------------- */
+
+.button-upper-right {
+  position: absolute;
+  top: 10px;
+  right: 90px;
+}
+
+.game-screen-bkgd.game-screen-summary {
+  padding-bottom: 15px;
+}
+.game-screen-bkgd .sequence-card {
+  color: #333;
+}
+.summary-round,
+.summary-fullgame {
+  padding: 0 25px;
+}
+.summary-round .sequence-card,
+.summary-fullgame .sequence-card {
+  margin-bottom: 25px;
+}
+
+.col-md-4 .option-button .btn {
+  display: block;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.menu-config {
+  text-align: left;
+}
+
+
+/* ------------------------------------------------------------- */
+/* Media queries for screen sizes */
+/* ------------------------------------------------------------- */
+
+/* Narrow (mobile) screens */
+@media screen and (max-width: 575px) {
+
+  .reroll-button-bar {
+    height: auto;
+    margin-top: 15px;
+  }
+
+  .reroll-button .btn-primary {
+    position: relative;
+    transform: translate(0, 0);
+  }
+
+  .game-screen {
+    width: -webkit-calc(100% - 20px);
+    width: -moz-calc(100% - 20px);
+    width: calc(100% - 20px);
+  }
+
+  .option-button {
+    text-align: center;
+  }
+  .option-button .btn {
+    width: inherit;
+    margin-right: 10px;
+  }
+  .option-button .btn:last-of-type {
+    margin-right: 0;
+  }
+
+  .option-button .btn-primary.reroll {
+    margin-left: 0;
+  }
+
+  .button-upper-right {
+    right: 10px;
+  }
+
+  .logo-block {
+    text-align: left;
+  }
+
+  .logo {
+    margin: 20px 0;
+  }
+
+  .option-card {
+    padding: 35px 10px;
+    font-size: 18pt;
+  }
+
+  .sequence-card-column {
+    margin-bottom: 10px;
+  }
+
+  .option-button .btn,
+  .reroll-button .btn,
+  .game-home .btn {
+    font-size: 16pt;
+    padding: 0.5em 1.5em;
+  }
+
+  .section-info {
+    padding: 25px;
+  }
+  
+  .summary-round,
+  .summary-fullgame {
+    padding: 0 15px;
+  }
+  .summary-round .sequence-card,
+  .summary-fullgame .sequence-card {
+    margin-bottom: 10px;
+  }
+
+}
+
+/* Medium width (tablet) sizes */
+@media screen and (max-width: 767px) {
+
+  .section-heading .col-section,
+  .section-heading .col-title,
+  .section-heading .col-timer {
+    text-align: center;
+  }
+
+  .reroll-button-bar {
+    height: auto;
+    margin-top: 15px;
+  }
+
+  .reroll-button .btn-primary {
+    position: relative;
+    transform: translate(0, 0);
+  }
+
+  .option-cards .col-md-6,
+  .option-cards .col-md-4 {
+    margin-bottom: 1.5em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .option-cards .col-md-6:last-of-type,
+  .option-cards .col-md-4:last-of-type {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border: none;
+  }
+
+  .sequence-card {
+    min-height: 0;
+  }
+
+  .closebutton {
+    right: 0;
+  }
+
+}
+
+/* Wider medium (desktop windowed) sizes */
+@media screen and (max-width: 991px) {
+  
+  .config-section {
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 30px;
+  }
+  
+}

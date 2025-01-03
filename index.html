@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Greg Lord">
+    <title>Story->Game</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,400;0,600;1,400;1,600&family=Lilita+One&display=swap"
+        rel="stylesheet">
+
+    <meta name="theme-color" content="#712cf9">
+
+    <link href="./css/storygame.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="./data/data.js"></script>
+    <script src="./data/content.js"></script>
+</head>
+
+<body>
+    <div id="ui" class="sg">
+
+        <div id="ui-header">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col logo-block">
+                        <img id="gamelogo" class="logo" src="./images/Logo-StoryGame.png">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="ui-active">
+
+            <div id="ui-intro">
+
+                <!-- Template: Intro screen -->
+                <div class="container game-screen game-home game-screen-bkgd" id="section-init">
+                    <div class="row">
+                        <div class="col">
+                            <h3>Welcome to Story&rarr;Game</h3>
+                            <p>Choose your next adventure from the options below:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <a class="btn btn-primary action-next">Begin a Story&rarr;Game</a>
+                            <a class="btn btn-primary change-mode">Begin a Game&rarr;Story</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><span class="separator"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h3>Or customize your game!</h3>
+                            <p>You can also create or load a custom game with the options below:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <a class="btn btn-primary open-menu-config">Build a Custom Game</a>
+                            <a class="btn btn-primary open-menu-load">Load a Custom Game</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End: Intro Screen -->
+
+                <div class="container game-screen game-section" id="section-summary" style="display: none">
+
+                    <div class="row section-heading">
+                        <div class="col-md-4 col-section">
+                            Story&rarr;Game
+                        </div>
+                        <div class="col-md-4 col-title">
+                            Round Complete!
+                        </div>
+                        <div class="col-md-4 col-timer">
+                            Summary
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="container game-screen game-section" id="section-summary-gameover" style="display: none">
+
+                    <div class="row section-heading">
+                        <div class="col-md-4 col-section">
+                            Story&rarr;Game
+                        </div>
+                        <div class="col-md-4 col-title">
+                            End of Game!
+                        </div>
+                        <div class="col-md-4 col-timer">
+                            Game Summary
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="ui-summary">
+
+                <!-- Template: Round summary screen -->
+                <div class="container game-screen game-home game-screen-bkgd game-screen-summary" id="section-flip"
+                    style="display: none">
+
+                    <div class="summary-round">
+                        <div class="row summary-round-1">
+                            <div class="col-12">
+                                <h4 class="round-summary-title"></h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="separator"></div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h3>On to the next round!</h3>
+                            <p>Click here to flip the script in round 2:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <a class="btn btn-success change-mode">Flip to Game&rarr;Story</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End: Round summary screen -->
+
+
+                <!-- Template: Game summary screen -->
+                <div class="container game-screen game-home game-screen-bkgd game-screen-summary" id="section-gameover"
+                    style="display: none">
+
+                    <div class="row">
+                        <div class="col">
+                            <h3>Game Complete!</h3>
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="summary-fullgame">
+                        <div class="row summary-round-1">
+                            <div class="col-12">
+                                <h4 class="round-summary-title"></h4>
+                            </div>
+                        </div>
+                        <div class="separator"></div>
+                        <div class="row summary-round-2">
+                            <div class="col-12">
+                                <h4 class="round-summary-title"></h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="separator"></div>
+
+                    <div class="row">
+                        <div class="col">
+                            <p>Click here to start a new game:</p>
+                            <a href="./index.html" class="btn btn-success">Play again?</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End: Game summary screen -->
+
+            </div>
+
+
+            <!-- Template: Main UI body element -->
+            <div id="ui-body">
+
+            </div>
+            <!-- End: Main UI body element -->
+
+
+            <!-- Template: UI cards element -->
+            <div id="ui-cards">
+
+                <!-- Template: Sequence Cards -->
+                <div class="container game-cards">
+
+                    <div id="sequence-cards" class="row">
+                        <?php // Sequence cards template - created from JS ?>
+                    </div>
+
+                </div>
+                <!-- End Sequence Cards -->
+
+            </div>
+            <!-- End: UI cards element -->
+
+        </div>
+
+        <!-- Template: Main menus element -->
+        <div id="ui-menus">
+            <div id="menu-config"></div>
+            <div id="menu-load"></div>
+        </div>
+        <!-- End: Main menus element -->
+
+    </div>
+
+    <div id="templates">
+
+        <!-- Main template blocks -->
+        <!-- These templates are empty default UI blocks, which are cloned and customized as needed by the game state -->
+
+        <!-- Template: Block: Section -->
+        <div class="container game-screen game-section" id="section-#" style="display: none">
+
+            <div class="row">
+                <div class="col option-cards-frame">
+
+                    <div class="row section-heading">
+                        <div class="col-md-3 col-section">
+                            Part <span class="section-num">#</span> of <span class="sections-total">#</span>
+                        </div>
+                        <div class="col-md-6 col-title">
+                            <span class="section-name">[SECTION-NAME]</span>
+                        </div>
+                        <div class="col-md-3 col-timer">
+                            <span class="section-duration"># Minutes</span>
+                        </div>
+                    </div>
+
+                    <div class="row section-info">
+                        <p class="section-tagline"></p>
+                        <p class="section-description"></p>
+                    </div>
+
+                    <div class="row option-cards" style="display: none"></div>
+
+                </div>
+            </div>
+
+            <div class="row reroll-button-bar">
+                <div class="col">
+                    <div class="reroll-button">
+                        <div class="btn btn-primary game-section-roller" data-sequence="1" data-section=""
+                            data-choices="15" data-prompt="Choose your [SECTION-NAME]!">Let's Roll!</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- End: Block: Section -->
+
+        <!-- Template: block: Option Card -->
+        <div class="col-md-NUM option-card-column">
+            <div class="option-card" data-option="#">
+                Option #
+            </div>
+            <div class="option-button">
+                <a class="btn btn-primary choose" data-option="#" data-section="">Choose </a><a
+                    class="btn btn-primary reroll" data-option="#" data-section="">Reroll (1x)</a>
+            </div>
+        </div>
+        <!-- End: Block: Option Card -->
+
+        <!-- Template: Block: Sequence Card -->
+        <div class="col-md-2 sequence-card-column">
+            <div class="gamecard-section">
+                <div class="sequence-card-label">
+                    [SECTION]
+                </div>
+                <div class="sequence-card">
+                    [VALUE]
+                </div>
+            </div>
+        </div>
+        <!-- End: Block: Sequence Card -->
+
+        <!-- Template: Block: Options -->
+        <div id="options-template">
+            <div class="row">
+                <div class="col-11"><input class="configure-input-text" type="text" value=""></div>
+                <div class="col-1">
+                    <div class="btn btn-danger configure-option-remove">x</div>
+                </div>
+            </div>
+        </div>
+        <!-- End: Block: Options -->
+
+        <div id="config">
+            <!-- Template: Menu: Config -->
+            <div class="container game-screen-bkgd menu-config">
+                <div class="row">
+                    <div class="col">
+
+                        <div class="sectionbox">
+                            <div class="position-relative overflow-hidden m-md-3 text-center">
+                                <div class="row">
+                                    <div class="col-md-8 p-md-3">
+                                        <h1 class="display-4 fw-normal">Configure your game</h1>
+                                        <p class="lead fw-normal"><em>Adjust the settings below to create a custom game
+                                                for your session!</em></p>
+                                    </div>
+                                    <div class="col-md-4 p-md-3 rollbox">
+                                        <div class="prompt-export">
+                                            <p>When you're finished, click here to save your custom game as a
+                                                portable/reusable configuration file!</p>
+                                            <p><strong>To load your game,</strong> choose the "Load a Custom Game"
+                                                button from the home screen, and paste in the exported text in the block
+                                                at the bottom of this screen.</p>
+                                        </div>
+                                        <br>
+                                        <a data-sequence="1" data-section="setting" data-choices="2"
+                                            class="configure-export btn btn-success export-jump">Export your
+                                            settings</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sectionbox">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 config-section">
+                                    <h2>Order</h2>
+                                    <p>Choose whether the session will begin with <strong>Story&rarr;Game</strong> or
+                                        <strong>Game&rarr;Story</strong>. The end of the first round will then flip the
+                                        scenario and let you play the other!</p>
+                                    <div class="form-group">
+                                        <select class="configure-select" id="conf-gameOrder">
+                                            <option value="sg">Begin with Story&rarr;Game</option>
+                                            <option value="gs">Begin with Game&rarr;Story</option>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <p><a class="btn btn-primary" data-bs-toggle="collapse" href="#gameModeDesc"
+                                            role="button" aria-expanded="false" aria-controls="gameModeDesc">What's the
+                                            difference?</a></p>
+                                    <div class="collapse" id="gameModeDesc">
+                                        <p><strong>Story&rarr;Game</strong> focuses on first creating an interesting
+                                            story scenario, and then shifting to thinking about how to "gamify" that
+                                            scenario, creating rules and gameplay mechanics that serve the story well.
+                                        </p>
+                                        <p><strong>Game&rarr;Story</strong> flips this around, and first challenges
+                                            players to think about what might make a fun game to <em>play</em>, and then
+                                            shifts to trying to imagine how to create a story that fits that game idea
+                                            and makes it more interesting.</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 config-section configure-form-options">
+                                    <h2>Timer Settings</h2>
+                                    <p>Choose whether or not to display an onscreen countdown timer during each game
+                                        section, and how those times are enforced.</p>
+
+                                    <div class="alert alert-warning" role="alert">
+                                        <strong>Notice:</strong> On-screen timers are currently disabled. Your settings
+                                        will be saved, but not used by the game until the next update.
+                                    </div>
+
+                                    <div class="configure-toggle">
+                                        <label class="switch">
+                                            <input id="conf-useTimer" type="checkbox" data-section="theme" checked>
+                                            <span class="slider round"></span>
+                                        </label>
+                                        <span class="toggle-label">Use Timer</span>
+                                    </div>
+                                    <div>
+                                        <p class="option-label"><strong>Duration of each round</strong></p>
+                                        <input id="conf-timerDuration" type="number" value="180">
+                                        <span class="toggle-label">(seconds)</span>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-6 configure-form-option">
+                                    <h2>Game Sections</h2>
+                                    <p>Choose which sections to include or exclude, to adjust the overall game time. (By
+                                        default, each section takes about 5 minutes.)</p>
+
+                                    <div class="row">
+                                        <div class="col-6" id="conf-sgSections">
+
+                                            <p><strong>Story&rarr;Game Round:</strong></p>
+                                            <div class="configure-toggle">
+                                                <label class="switch">
+                                                    <input type="checkbox" data-section="setting" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <span class="toggle-label">Setting</span>
+                                            </div>
+                                            <div class="configure-toggle">
+                                                <label class="switch">
+                                                    <input type="checkbox" data-section="primarysources" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <span class="toggle-label">Primary Sources</span>
+                                            </div>
+                                            <div class="configure-toggle">
+                                                <label class="switch">
+                                                    <input type="checkbox" data-section="theme" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <span class="toggle-label">Theme</span>
+                                            </div>
+                                            <div class="configure-toggle">
+                                                <label class="switch">
+                                                    <input type="checkbox" data-section="genre" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <span class="toggle-label">Genre</span>
+                                            </div>
+                                            <div class="configure-toggle">
+                                                <label class="switch">
+                                                    <input type="checkbox" data-section="coremechanic" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <span class="toggle-label">Core Mechanic</span>
+                                            </div>
+                                            <div class="configure-toggle">
+                                                <label class="switch">
+                                                    <input type="checkbox" data-section="plottwist" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <span class="toggle-label">Plot Twist</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6" id="conf-gsSections">
+                                            <p><strong>Game&rarr;Story Round:</strong></p>
+
+                                            <div class="configure-toggle">
+                                                <label class="switch">
+                                                    <input type="checkbox" data-section="coremechanic" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <span class="toggle-label">Core Mechanic</span>
+                                            </div>
+                                            <div class="configure-toggle">
+                                                <label class="switch">
+                                                    <input type="checkbox" data-section="genre" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <span class="toggle-label">Genre</span>
+                                            </div>
+                                            <div class="configure-toggle">
+                                                <label class="switch">
+                                                    <input type="checkbox" data-section="setting" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <span class="toggle-label">Setting</span>
+                                            </div>
+                                            <div class="configure-toggle">
+                                                <label class="switch">
+                                                    <input type="checkbox" data-section="theme" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <span class="toggle-label">Theme</span>
+                                            </div>
+                                            <div class="configure-toggle">
+                                                <label class="switch">
+                                                    <input type="checkbox" data-section="plottwist" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <span class="toggle-label">Plot Twist</span>
+                                            </div>
+                                            <div class="configure-toggle">
+                                                <label class="switch">
+                                                    <input type="checkbox" data-section="primarysources" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                                <span class="toggle-label">Primary Sources</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="sectionbox">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h2>Custom Game Genres</h2>
+                                    <p>Edit the default game genres, or add your own!<br><em>(Minimum of 2
+                                            required)</em></p>
+                                </div>
+                                <div class="col-md-8 configure-form-options" id="options-genre">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 offset-md-4">
+                                    <div class="btn btn-primary configure-option-add" data-option-type="genre">Add
+                                        another</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sectionbox">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h2>Custom Game Settings</h2>
+                                    <p>Edit the default game settings, or add your own!<br><em>(Minimum of 2
+                                            required)</em></p>
+                                </div>
+                                <div class="col-md-8 configure-form-options" id="options-setting">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 offset-md-4">
+                                    <div class="btn btn-primary configure-option-add" data-option-type="setting">Add
+                                        another</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sectionbox">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h2>Custom Themes</h2>
+                                    <p>Edit the default themes, or add your own!<br><em>(Minimum of 2 required)</em></p>
+                                </div>
+                                <div class="col-md-8 configure-form-options" id="options-theme">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 offset-md-4">
+                                    <div class="btn btn-primary configure-option-add" data-option-type="theme">Add
+                                        another</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sectionbox">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h2>Custom Game Mechanics</h2>
+                                    <p>Edit the default game mechanics, or add your own!<br><em>(Minimum of 2
+                                            required)</em></p>
+                                </div>
+                                <div class="col-md-8 configure-form-options" id="options-coremechanic">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 offset-md-4">
+                                    <div class="btn btn-primary configure-option-add" data-option-type="coremechanic">
+                                        Add another</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sectionbox">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h2>Custom Plot Twists</h2>
+                                    <p>Edit the default plot twists, or add your own!<br><em>(Minimum of 2
+                                            required)</em></p>
+                                </div>
+                                <div class="col-md-8 configure-form-options" id="options-plottwist">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 offset-md-4">
+                                    <div class="btn btn-primary configure-option-add" data-option-type="plottwist">Add
+                                        another</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sectionbox">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h2>Custom Primary Sources</h2>
+                                    <p>Edit the default primary source types, or add your own!<br><em>(Minimum of 2
+                                            required)</em></p>
+                                </div>
+                                <div class="col-md-8 configure-form-options" id="options-primarysources">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 offset-md-4">
+                                    <div class="btn btn-primary configure-option-add" data-option-type="primarysources">
+                                        Add another</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sectionbox even">
+                            <div class="position-relative overflow-hidden m-md-3 text-center">
+                                <div class="row">
+                                    <div class="col-md-4 exportbox">
+                                        <div class="prompt-export">When you're finished, click here to save your custom
+                                            game as a portable/reusable configuration file!</div>
+                                        <br>
+                                        <a data-sequence="1" data-section="setting" data-choices="2"
+                                            class="configure-export btn btn-success">Export your settings</a>
+                                        <a data-sequence="1" data-section="setting" data-choices="2"
+                                            class="configure-download btn btn-success">Download your settings</a>
+                                    </div>
+                                    <div class="col-md-8 exportbox">
+                                        <a name="exportbox"></a>
+                                        <textarea class="configure-export-output"></textarea>
+                                    </div>
+                                </div>
+                                <p>^ The text that appears in this box is your custom game file! Copy this, and paste it
+                                    into the "Load a Custom Game" menu from the title screen!</p>
+                            </div>
+                        </div>
+
+                        <a class="btn btn-primary close-menu-config">Close</a>
+
+                    </div>
+                </div>
+                <a class="btn btn-danger close-menu-config closebutton">x</a>
+            </div>
+            <!-- End: Menu: Config -->
+        </div>
+        <div id="load">
+            <!-- Template: Menu: Load -->
+            <div class="container game-screen-bkgd menu-config">
+                <div class="row">
+                    <div class="col">
+
+                        <div class="sectionbox">
+                            <div class="position-relative overflow-hidden m-md-3 text-center">
+                                <div class="row">
+                                    <div class="col-md-4 p-md-3">
+                                        <h1 class="display-5 fw-normal">Load Custom Game</h1>
+                                        <p class="lead fw-normal"><em></em></p>
+                                    </div>
+                                    <div class="col-md-8 explanation">
+                                        <p>Paste the code from a saved game below to begin with your custom data. (If
+                                            you downloaded your save game as a file, open the text (.txt) file and copy
+                                            the full contents and paste them below here.)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <textarea id="loadgame-input" style="width: 100%; height: 100px"></textarea>
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-primary action-loadgame">Load Game</a>
+                                    <a class="btn btn-primary action-close-load">Close</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- End: Menu: Load -->
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <!--<script src="./js/smsg.js"></script>-->
+    <script src="./js/storygame.js"></script>
+
+</body>
+
+</html>
